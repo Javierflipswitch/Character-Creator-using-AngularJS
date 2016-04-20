@@ -1,20 +1,37 @@
-<div>
-  <h2>I am going to ask you two questions -- please choose wisely...</h2>
+<div class="container">
+    <h2>I am going to ask you two questions -- please choose wisely...</h2>
   <div>
-    1. Are you a Knight, or a Wizard?
-    <ul ng-repeat="characterType in characterTypes">
-          <input type="button"  value="{{characterType.id}}"> {{characterType.value}} </input>  
+    <h3>1. Are you a Knight, or a Wizard?</h3>
+    <ul>
+        <li ng-repeat="characterType in characterTypes">
+          <input type="radio" 
+          id="t-option" 
+          name="character"
+          ng-value="characterType.value"
+          ng-model="character.characterTypes">
+          <label for="t-option">{{characterType.value}}</label>
+        
+          <div class="check"> </div>
+          <div class="inside"> </div>
+      </li>
     </ul>
   </div>
-  <div>
-    2. Are you a Good or Evil?
+  <!--<div>
+    <h3> 2. Are you a Good or Evil? <h3>
     <ul ng-repeat="personalityType in personalityTypes"> 
-          <input type="button" 
-          ng-value="{{personalityType.id}}"> {{personalityType.value}} </input>  
-    </ul>
+          <li>
+          <input type="radio"
+           id="s-option" 
+           value="{{personalityType.value}}"
+           ng-model="character.personalityTypes">
+          <label for="s-option">{{personalityType.value}}</label>
+          
+          <div class="check"><div class="inside"></div></div>
+        </li>
+    </ul>-->
     <div>
-    <p>Character Type: {{character.type}} </p>
-    <p>Personality Type: {{character.personality}}</p>
+    <p>Character Type: {{character.characterTypes}} </p>
+    <p>Personality Type: {{character.personalityTypes}}</p>
     <p>job: </p>
     </div>
 </div>
