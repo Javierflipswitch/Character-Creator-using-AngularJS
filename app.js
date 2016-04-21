@@ -14,4 +14,3 @@ config(['$routeProvider', function($routeProvider) {
       controller: 'view1Controller'
   }).otherwise({redirectTo: '/view1'});
 }]);
-
