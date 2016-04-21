@@ -1,37 +1,65 @@
+<form name="myForm" ng-controller="view1Controller as vm">
 <div class="container">
     <h2>I am going to ask you two questions -- please choose wisely...</h2>
-  <div>
+ <div>
     <h3>1. Are you a Knight, or a Wizard?</h3>
     <ul>
-        <li ng-repeat="characterType in characterTypes">
+        <li ng-repeat="characterType in vm.characterTypes">
           <input type="radio" 
-          id="t-option" 
           name="character"
-          ng-value="characterType.value"
-          ng-model="character.characterTypes">
-          <label for="t-option">{{characterType.value}}</label>
-        
+          ng-model="vm.character.characterType" 
+          value="{{characterType.id}}" required />
+          <label>{{characterType.value}}</label>        
           <div class="check"> </div>
           <div class="inside"> </div>
-      </li>
+        </li>
     </ul>
   </div>
-  <!--<div>
+ <div>
     <h3> 2. Are you a Good or Evil? <h3>
-    <ul ng-repeat="personalityType in personalityTypes"> 
-          <li>
+    <ul ng-repeat="personalityType in vm.personalityTypes"> 
+        <li>
           <input type="radio"
-           id="s-option" 
-           value="{{personalityType.value}}"
-           ng-model="character.personalityTypes">
-          <label for="s-option">{{personalityType.value}}</label>
-          
-          <div class="check"><div class="inside"></div></div>
+           name="character"
+           ng-model="vm.character.personalityType"
+           value="{{personalityType.id}}" required />
+          <label>{{personalityType.value}}</label>     
+          <div class="check"></div>
+          <div class="inside"></div>
         </li>
-    </ul>-->
-    <div>
-    <p>Character Type: {{character.characterTypes}} </p>
-    <p>Personality Type: {{character.personalityTypes}}</p>
-    <p>job: </p>
-    </div>
+    </ul>
+ </div>
+    <p>Character Type Selected: {{vm.character.characterType}} </p>
+    <p>Personality Type Selected: {{vm.character.personalityType}}</p>
+    <p>Job: {{vm.character.jobTypes}}</p>
+    <p>Username: {{vm.character.username}}</p>
+    <p>assignJob: {{vm.assignJob()}}</p>
+    
+   <div>
+   <h3> What do you identify yourself as? </h3>
+    <p><input type="radio" ng-model="vm.character.gender" value="male" />male
+    <input type="radio" ng-model="vm.character.gender" value="female" />female
+    </p>
+    <input type="text"
+      name="character"
+      placeholder="What is your war name?"
+      ng-model="vm.character.username" 
+      ng-value="{{vm.character.username}}" required/>
+      <p>
+    <input type="submit"
+      class="button-0"
+      value="Save"
+      ng-click="vm.update()"
+      ng-model="vm.character.assignJob()" required />
+     <p><input type="reset"
+      class="button-0"
+      value="Reset"
+      ng-click="vm.reset()" required />
+   
 </div>
+<div>
+    <p>All of it: {{vm.character | json:4}}</p>
+    <p>Master: {{vm.master | json:4}}</p>
+</div>
+</div>
+</form>
