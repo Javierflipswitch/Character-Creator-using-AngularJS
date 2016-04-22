@@ -16,6 +16,11 @@ app.controller('view1Controller', function() {
       vm.character = angular.copy(vm.master);
   };
   
+  vm.addToList = function(master) {
+      vm.submitUser = {};
+      vm.submitUser.push(master);
+  }
+  
   vm.characterTypes = [
       {id: 1, value: 'Knight'},
       {id: 2, value: 'Wizard'}];

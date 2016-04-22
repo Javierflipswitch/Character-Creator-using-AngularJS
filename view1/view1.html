@@ -1,4 +1,4 @@
-<form name="myForm" ng-controller="view1Controller as vm">
+<form name="myForm" ng-controller="view1Controller as vm" ng-submit='vm.addToList(master)'>
 <div class="container">
     <h2>I am going to ask you two questions -- please choose wisely...</h2>
  <div>
@@ -36,12 +36,9 @@
     </ul>
  </div>
     <br><br><br><br><br><br><br><br><br> <!-- Temp fix --> 
-    <p>Character Type Selected: {{vm.character.characterType}} </p>
-    <p>Personality Type Selected: {{vm.character.personalityType}}</p>
-    <p>Job: {{vm.updateJob()}}</p>
-    <p>Username: {{vm.character.username}}</p>
-    <p>Assign Job: {{vm.assignJob()}}</p>  
-    <p>charJob var = {{vm.character.jobtype}}</p>
+    <!--<p>Character Type Selected: {{vm.character.characterType}} </p>
+    <p>Personality Type Selected: {{vm.character.personalityType}}</p>-->
+    <p>{{vm.assignJob()}}</p>  
    <div>
    <h3> What do you identify yourself as? </h3>
     <ul>
@@ -66,11 +63,13 @@
       name="character"
       placeholder="What is your war name?"
       ng-model="vm.character.username" 
-      ng-value="{{vm.character.username}}" required/>
+      ng-value="{{vm.character.username}}" 
+      ng-minlength='3' required/>
       <br><br>
     <input type="submit"
       class="button-0"
       value="Submit"
+      ng-disabled='myForm.$invalid'
       ng-value="{{vm.character.jobType}}"
       ng-click="vm.update()"
       ng-model="vm.character.jobType" required />
@@ -79,10 +78,16 @@
       value="Reset"
       ng-click="vm.reset()" required />
 </div>
-<div>
+<!--<div>
     <p>Temporary Character Data: {{vm.character | json:4}}</p>
     <p>Master: {{vm.master | json:4}}</p>
-</div>
+</div>-->
+<fieldset>
+  <legend>Your Character</legend>
+  <div>
+    <h2>Name:</h2> {{vm.master.username}} <h2>Race:</h2> {{vm.master.gender}} <h2>Job:</h2> {{vm.master.jobType}}
+   </div>
+</fieldset>
 </div>
 </form>
 
