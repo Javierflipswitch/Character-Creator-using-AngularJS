@@ -37,23 +37,18 @@ app.controller('view1Controller', function() {
   vm.assignJob = function() {
       var ctype = vm.character.characterType;
       var ptype = vm.character.personalityType;
-        if(ctype == 1 && ptype == 1)
-        {
-           return getJobTypeById(1);
+        if(ctype == 1 && ptype == 1) {
+           vm.character.jobType = getJobTypeById(1);
         }
-        else if (ctype == 1 && ptype == 2)
-        {
-            return getJobTypeById(2);
+        else if (ctype == 1 && ptype == 2) {
+            vm.character.jobType = getJobTypeById(2);
         }
-           else if (ctype == 2 && ptype == 1)
-        {
-            return getJobTypeById(3);
+           else if (ctype == 2 && ptype == 1) {
+            vm.character.jobType = getJobTypeById(3);
         }
-           else if (ctype == 2 && ptype == 2)
-        {
-            return getJobTypeById(4);
+           else if (ctype == 2 && ptype == 2) {
+            vm.character.jobType = getJobTypeById(4);
         }
-  }  
-  
-  vm.character.jobTypes = vm.assignJob();
+        return vm.character.jobType;
+  }
 }); 
