@@ -81,7 +81,7 @@ ul li{
 }
 
 ul li input[type=radio]{
-  display: inherit;
+  display: none;
   position: absolute;
   visibility: initial;
 }
@@ -153,4 +153,14 @@ form input[type=text]:hover
     transform: translate(0px,5px);
     -webkit-transform: translate(0px,5px);
     border-bottom: 1px solid;
+}
+
+legend {
+    display: block;
+    padding-left: 2px;
+    padding-right: 2px;
+    border: #FFFFFF;
+}
+.ng-invalid-required, .ng-invalid-minlength {
+  border-color: red; 
 }
